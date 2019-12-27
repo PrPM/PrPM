@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using PrPM.Utilities;
 
 namespace PrPM.Tasks
 {
@@ -16,11 +17,11 @@ namespace PrPM.Tasks
         public static void Run(string pkgName)
         {
             MakeRequest(pkgName).Wait();
-            Utils.ConsoleUtils.ClearCurrent();
+            ConsoleUtils.ClearCurrent();
             JObject package = JObject.Parse(npmResponse);
             if ((string)package["error"] == "Not found")
             {
-                PrPM.Program.ErrorAndExit("Package not found.");
+                ConsoleUtils.ErrorAndExit("Package not found.");
             }
             string latestVersion = package["dist-tags"]["latest"].ToString();
             var currentVersion = package["versions"][latestVersion];

@@ -1,0 +1,13 @@
+{
+  "name": "prpm",
+  "version": "0.0.1",
+  "description": "Sample package.json file for testing",
+  "main": "src/Program.cs",
+  "repository": "https://github.com/PrPMjs/PrPM",
+  "author": "PrPM Contributors",
+  "license": "BSL-1.0",
+  "private": true,
+  "scripts": {
+    "test": "echo It works!"
+  }
+}

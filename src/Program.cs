@@ -1,21 +1,16 @@
 ﻿using System;
-using PrPM;
+using PrPM.Utilities;
 
 namespace PrPM
 {
     class Program
     {
-        public static void ErrorAndExit(string error)
-        {
-            Console.WriteLine(error);
-            Environment.Exit(1);
-        }
 
         static void Main(string[] args)
         {
             if (args.Length < 1)
             {
-                ErrorAndExit($"Options: info (Display general PrPM info), package (Query a package)");
+                ConsoleUtils.ErrorAndExit($"Options: info (Display general PrPM info), package (Query a package)");
             }
             if (args[0] == "info")
             {
@@ -25,14 +20,18 @@ namespace PrPM
             {
                 if (args.Length < 2)
                 {
-                    ErrorAndExit("A package name is required.");
+                    ConsoleUtils.ErrorAndExit("A package name is required.");
                 }
                 Console.WriteLine("Please wait while I query NPM...");
                 Tasks.PackageTask.Run(args[1]);
             }
             else if (args[0] == "init")
             {
-                Tasks.InitTasks.Run();
+                Tasks.InitTask.Run();
+            }
+            else if (args[0] == "run")
+            {
+                Tasks.RunTask.Run(args[1]);
             }
         }
     }

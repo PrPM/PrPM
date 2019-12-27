@@ -1,6 +1,6 @@
 using System;
 
-namespace PrPM.Utils
+namespace PrPM.Utilities
 {
     class ConsoleUtils
     {
@@ -14,6 +14,12 @@ namespace PrPM.Utils
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCur);
+        }
+
+        public static void ErrorAndExit(string error)
+        {
+            Console.WriteLine(error);
+            Environment.Exit(1);
         }
     }
 }
